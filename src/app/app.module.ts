@@ -3,16 +3,27 @@ import { NgModule } from '@angular/core';
 
 
 import { AppComponent } from './app.component';
+import { HeaderComponent } from './header/header.component';
+import { SigninComponent } from './auth/signin/signin.component';
+import { SignupComponent } from './auth/signup/signup.component';
 
+import {AppRoutingModule} from './app-routing.module';
+import { WelcomeComponent } from './welcome/welcome.component'
+import { FormsModule } from '@angular/forms';
+import { AuthService } from './auth/services/auth.service';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    HeaderComponent,
+    SigninComponent,
+    SignupComponent,
+    WelcomeComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule, AppRoutingModule, FormsModule
   ],
-  providers: [],
+  providers: [AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
