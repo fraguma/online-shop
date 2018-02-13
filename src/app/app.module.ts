@@ -12,6 +12,7 @@ import { WelcomeComponent } from './welcome/welcome.component'
 import { FormsModule } from '@angular/forms';
 import { AuthService } from './auth/services/auth.service';
 import { ItemService } from './shared/services/item.service';
+import { ShoppingListComponent } from './shopping-list/shopping-list.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { ItemService } from './shared/services/item.service';
     HeaderComponent,
     SigninComponent,
     SignupComponent,
-    WelcomeComponent
+    WelcomeComponent,
+    ShoppingListComponent
   ],
   imports: [
     BrowserModule, AppRoutingModule, FormsModule
