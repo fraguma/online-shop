@@ -11,6 +11,7 @@ import {AppRoutingModule} from './app-routing.module';
 import { WelcomeComponent } from './welcome/welcome.component'
 import { FormsModule } from '@angular/forms';
 import { AuthService } from './auth/services/auth.service';
+import { ItemService } from './shared/services/item.service';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,7 @@ import { AuthService } from './auth/services/auth.service';
   imports: [
     BrowserModule, AppRoutingModule, FormsModule
   ],
-  providers: [AuthService],
+  providers: [AuthService, ItemService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
