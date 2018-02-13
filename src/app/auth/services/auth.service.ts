@@ -13,6 +13,7 @@ constructor(private router: Router){}
         firebase.auth().createUserWithEmailAndPassword(email, password)
             .then(response => {
                 alert('User created successfully');
+                this.signinUser(email, password);
                 this.router.navigate(['/']);
             })
             .catch(error => 
