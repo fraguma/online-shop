@@ -11,7 +11,7 @@ export class ItemService{
         new Item(
             'Item numero 2',
             34.90,
-            'https://i2.linio.com/p/e7ad556f25504c845047bd9a43e511ef-product.jpg'
+            'https://static.wixstatic.com/media/56e498_8e71daa7ddc64eaf819f976318a973ff.png_256'
         ), 
         new Item(
             'Item numero 3',
@@ -27,5 +27,9 @@ export class ItemService{
 
     getItems(){
         return this.items.slice();
+    }
+
+    getItem(index:number){
+        return this.items[index];
     }
 }

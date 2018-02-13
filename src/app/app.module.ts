@@ -13,6 +13,7 @@ import { FormsModule } from '@angular/forms';
 import { AuthService } from './auth/services/auth.service';
 import { ItemService } from './shared/services/item.service';
 import { ShoppingListComponent } from './shopping-list/shopping-list.component';
+import { ItemDetailComponent } from './item-detail/item-detail.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { ShoppingListComponent } from './shopping-list/shopping-list.component';
     SigninComponent,
     SignupComponent,
     WelcomeComponent,
-    ShoppingListComponent
+    ShoppingListComponent,
+    ItemDetailComponent
   ],
   imports: [
     BrowserModule, AppRoutingModule, FormsModule
