@@ -6,6 +6,7 @@ import 'rxjs/add/operator/map';
 import { AuthService } from '../../auth/services/auth.service'
 import { ItemService } from '../services/item.service'
 import { Item } from '../models/item.model';
+import { User } from '../models/user.model';
 
 @Injectable()
 export class DataStorageService{
@@ -17,18 +18,25 @@ export class DataStorageService{
     saveItemsOnFirebase(){
         const token = this.authService.getToken();
         let items = this.itemService.getItems();
+        console.log(items)
         return this.http.put(this.firebaseUrl + 'items.json?auth=' + token, items)
     }
 
     getItemsFromFirebase(){
         const token = this.authService.getToken();
         this.http.get(this.firebaseUrl + 'items.json?auth=' + token)
-        .map((response:Response) => {
-            console.log(response.json())
-            let items: Item[]= response.json()
-            return items;
+            .map((response:Response) => {
+                console.log(response.json())
+                let items: Item[]= response.json()
+                return items;
         })
         return []
     }
-    
+
+    saveUserOnFirebase(email:string, password:string, listItems:Item[], token){
+        console.log('1')
+        let user:User=new User(email, password,listItems);
+        console.log(user)
+        return this.http.post(this.firebaseUrl + 'users.json?auth=' + token, user)
+    }   
 }
