@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { DataStorageService } from '../shared/services/data-storage.service';
+import { Item } from '../shared/models/item.model';
 
 @Component({
   selector: 'app-shopping-list',
@@ -7,9 +9,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ShoppingListComponent implements OnInit {
 
-  constructor() { }
+  items: Item[] = []
+
+  constructor(private dataStorageService: DataStorageService) { }
 
   ngOnInit() {
+  }
+
+  getItemsFirebase(){
+    this.items = this.dataStorageService.getItemsFromFirebase();
+    console.log(this.items);
   }
 
 }

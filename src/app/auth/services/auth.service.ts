@@ -36,10 +36,13 @@ constructor(private router: Router){}
     }
 
     getToken() {
-        firebase.auth().currentUser.getIdToken()
+        if (firebase.auth().currentUser != null){
+            firebase.auth().currentUser.getIdToken()
             .then((token: string) => this.token = token)
             .catch(error => console.log('getToken() error: ', error));
         return this.token;
+        }
+        return null
     }
 
     isAuthenticated() {

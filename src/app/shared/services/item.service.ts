@@ -1,5 +1,4 @@
 import { Item } from "../models/item.model";
-import { Injectable } from "@angular/core";
 
 export class ItemService{
     private items : Item[] =[
