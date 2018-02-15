@@ -17,8 +17,7 @@ export class ShoppingListComponent implements OnInit {
   }
 
   getItemsFirebase(){
-    this.items = this.dataStorageService.getItemsFromFirebase();
-    console.log(this.items);
-  }
+    this.dataStorageService.getItemsFromFirebase();
+   }
 
 }

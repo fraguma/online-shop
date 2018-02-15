@@ -26,11 +26,9 @@ export class DataStorageService{
         const token = this.authService.getToken();
         this.http.get(this.firebaseUrl + 'items.json?auth=' + token)
             .map((response:Response) => {
-                console.log(response.json())
-                let items: Item[]= response.json()
+                let items: Item[] = response.json()
                 return items;
-        })
-        return []
+            }).subscribe((items: Item[]) =>console.log('getItemsFromFirebase() response: ', items));
     }
 
     saveUserOnFirebase(email:string, password:string, listItems:Item[]){
