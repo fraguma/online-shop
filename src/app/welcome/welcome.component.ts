@@ -3,6 +3,7 @@ import { Item } from '../shared/models/item.model';
 import { ItemService } from '../shared/services/item.service';
 import { DataStorageService } from '../shared/services/data-storage.service'
 import { Response } from '@angular/http';
+import { AuthService } from '../auth/services/auth.service';
 
 
 @Component({
@@ -18,7 +19,6 @@ export class WelcomeComponent implements OnInit {
 
   ngOnInit() {
     this.items = this.itemService.getItems();
-    
   }
 
   saveItemsFirebase(){

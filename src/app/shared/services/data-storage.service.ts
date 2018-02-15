@@ -33,10 +33,9 @@ export class DataStorageService{
         return []
     }
 
-    saveUserOnFirebase(email:string, password:string, listItems:Item[], token){
-        console.log('1')
+    saveUserOnFirebase(email:string, password:string, listItems:Item[]){
+        const token = this.authService.getToken();
         let user:User=new User(email, password,listItems);
-        console.log(user)
         return this.http.post(this.firebaseUrl + 'users.json?auth=' + token, user)
     }   
 }

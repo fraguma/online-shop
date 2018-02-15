@@ -10,39 +10,43 @@ public token: string=null;
 constructor(private router: Router){}
 
     signupUser(email:string, password:string){
+        return new Promise((resolve, reject) =>
         firebase.auth().createUserWithEmailAndPassword(email, password)
             .then(response => {
-                alert('User created successfully');
-                this.signinUser(email, password);
                 this.router.navigate(['/']);
+                resolve('done');
+                alert('User created successfully');
             })
             .catch(error => 
             {
                 alert(error.message);
+                reject('error');
             })
+        );
     }
 
     signinUser(email:string, password:string){
+        return new Promise((resolve, reject) =>
         firebase.auth().signInWithEmailAndPassword(email, password)
             .then(response => {
                 firebase.auth().currentUser.getIdToken()
                     .then((token: string) => this.token = token);
                 this.router.navigate(['/']);
+                resolve('done');
             })
             .catch(error => 
             {
                 alert(error.message);
+                reject('error');
             })
+        );
     }
 
-    getToken() {
-        if (firebase.auth().currentUser != null){
-            firebase.auth().currentUser.getIdToken()
+    getToken() { 
+        firebase.auth().currentUser.getIdToken()
             .then((token: string) => this.token = token)
             .catch(error => console.log('getToken() error: ', error));
         return this.token;
-        }
-        return null
     }
 
     isAuthenticated() {
