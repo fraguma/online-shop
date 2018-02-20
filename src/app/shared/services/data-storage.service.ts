@@ -35,5 +35,19 @@ export class DataStorageService{
         const token = this.authService.getToken();
         let user:User=new User(email, password,listItems);
         return this.http.post(this.firebaseUrl + 'users.json?auth=' + token, user)
-    }   
+    }
+    
+    getUsersFromFirebase(){
+        const token = this.authService.getToken();
+        this.http.get(this.firebaseUrl + 'users.json?auth=' + token)
+            .map((response:Response) => {
+                let users: User[] = response.json()
+                return users;
+            }).subscribe((users: User[]) =>console.log('getUsersFromFirebase() response: ', users));
+    }
+
+    getUsersFromFirebaseNoSubscribe() {
+        const token = this.authService.getToken();
+        return this.http.get(this.firebaseUrl + 'users.json?auth=' + token);}
+     
 }
