@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../auth/services/auth.service';
 
+import * as firebase from 'firebase';
+
+
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
@@ -15,6 +18,7 @@ export class HeaderComponent implements OnInit {
 
   logOut(){
     this.authService.logout();
+    this.authService.signInAnonymously();
   }
 
 }

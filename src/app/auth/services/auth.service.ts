@@ -50,12 +50,26 @@ constructor(private router: Router){}
     }
 
     isAuthenticated() {
-        return this.token != null;
+        if(!firebase.auth().currentUser) return false
+        if(firebase.auth().currentUser.isAnonymous){
+            return false
+        }
+        else{
+            return true
+        }
     }
 
     logout() {
         firebase.auth().signOut();
         this.token = null;
         this.router.navigate(['/']);
+    }
+
+    signInAnonymously(){
+        firebase.auth().signInAnonymously()
+        .catch(error => 
+        {
+            alert(error.message);
+        })
     }
 }
